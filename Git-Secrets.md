@@ -100,7 +100,12 @@ git secrets --aws-provider [credentials-file-path]
 
 ## おまけ
 `git clone` 時に、自動で `git secrets --install` したい!  
-`git hooks` を利用する!
+`init.templatedir` を利用する!  
+※ `init.templatedir` は、`git init` や `git clone` 時に、`git hooks` を作成してくれる!  
+※ `git hooks` とは、Gitの特定のコマンドの前後で処理をさせたい時に利用する!  
+(`git secrets` は、 `git hooks` を利用したもの)  
+<br>
+下記は、設定方法
 
 ```
 git secrets --install ~/.git-templates/git-secrets
