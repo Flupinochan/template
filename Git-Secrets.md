@@ -1,10 +1,10 @@
 # Git-Secrets
 
 ## 概要
-ファイルに、機密情報が含まれる場合に、git commitできないようにする!  
-設定ファイルに記載された正規表現にマッチした場合、git commitができない!  
+ファイルに、機密情報が含まれる場合に、`git commit` できないようにする!  
+設定ファイルに記載された正規表現にマッチした場合、`git commit` ができない!  
 カスタム設定を備忘録として、記載しておく  
---global(デフォルト)設定をすれば楽!  
+`--global` (デフォルト)設定をすれば楽!  
 ソース : [git-secrets](https://github.com/awslabs/git-secrets)
 
 
@@ -97,3 +97,20 @@ git secrets --aws-provider [credentials-file-path]
 
 機密情報を削除したい場合、設定ファイルから手動で削除するしかありません...  
 → [Global機密情報設定ファイル](#global機密情報設定ファイル)
+
+## おまけ
+`git clone` 時に、自動で `git secrets --install` したい!  
+`git hooks` を利用する!
+
+```
+git secrets --install ~/.git-templates/git-secrets
+git config --global init.templateDir ~/.git-templates/git-secrets
+```
+
+`git clone` 時に、`ローカルリポジトリ\.git\hooks\` に、下記ファイルが作成されればok!
+
+```
+commit-msg
+pre-commit
+prepare-commit-msg
+```
